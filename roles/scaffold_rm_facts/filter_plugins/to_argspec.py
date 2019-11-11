@@ -13,7 +13,8 @@ from ansible.module_utils.six import string_types
 from ansible.utils.display import Display
 from ansible.errors import AnsibleFilterError
 
-OPTIONS_METADATA = ('type', 'elements', 'default', 'choices', 'required')
+OPTIONS_METADATA = ('type', 'elements', 'default', 'choices', 'required',
+                    'priority', 'key', 'presence', 'translate')
 SUBOPTIONS_METADATA = ('mutually_exclusive', 'required_together',
                        'required_one_of', 'supports_check_mode', 'required_if')
 
