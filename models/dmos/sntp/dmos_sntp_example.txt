@@ -21,7 +21,7 @@ dmos_sntp:
         ipv6: 1918::2019
   state: merged
 
-# This configuration will result on the following commands:
+# This configuration will result in the following commands:
 
 # - sntp authenticate
 # - sntp authentication-key 10 md5 test
@@ -55,7 +55,7 @@ dmos_sntp:
         ipv6: 1918::2019
   state: deleted
 
-# This configuration will result on the following commands:
+# This configuration will result in the following commands:
 
 # - no sntp authenticate
 # - no sntp authentication-key 10

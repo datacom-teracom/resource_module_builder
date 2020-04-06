@@ -27,7 +27,7 @@ dmos_lldp:
       tx_fast_init: 3
   state: merged
 
-# This configuration will result on the following commands:
+# This configuration will result in the following commands:
 
 # - lldp interface gigabit-ethernet-1/1/1 admin-status rx-only
 # - lldp interface gigabit-ethernet-1/1/1 notification
@@ -62,10 +62,10 @@ dmos_lldp:
       tx_fast_init: 3
   state: deleted
 
-# This configuration will result on the following commands:
+# This configuration will result in the following commands:
 
-# - no lldp interface gigabit-ethernet-1/1/2
 # - no lldp interface gigabit-ethernet-1/1/1 tlvs-tx system-capabilities
 # - no lldp interface gigabit-ethernet-1/1/1 tlvs-tx system-name
+# - no lldp interface gigabit-ethernet-1/1/2
 # - no lldp tx-credit-max
 # - no lldp tx-fast-init

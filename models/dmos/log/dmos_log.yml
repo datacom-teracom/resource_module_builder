@@ -4,36 +4,40 @@ ANSIBLE_METADATA: |
     {
         'metadata_version': '1.1',
         'status': ['preview'],
-        'supported_by': '<support_group>'
+        'supported_by': 'community'
     }
 
 NETWORK_OS: dmos
 RESOURCE: log
-COPYRIGHT: Copyright 2019 Red Hat
+COPYRIGHT: Copyright 2020 Datacom (Teracom Telematica S/A) <datacom.com.br>
 LICENSE: gpl-3.0.txt
 
 DOCUMENTATION: |
   module: dmos_log
-  version_added: 4.9
-  short_description: 'Manages <xxxx> attributes of <network_os> <resource>.'
-  description: 'Manages <xxxx> attributes of <network_os> <resource>'
-  author: Ansible Network Engineer
+  version_added: '2.10'
+  short_description: Manages Log on DATACOM DmOS devices.
+  description:
+    - This module provides a declarative management of System Log
+      on DATACOM DmOS devices.
+  author:
+    - Vinicius Kleinubing (@vgkleinubing) <vinicius.grubel@datacom.com.br>
+    - LDS Labs (@lds-labs)
   notes:
-    - 'Tested against <network_os> <version>'
+    - Tested against DmOS version 5.2.0.
   options:
     config:
-      description: The provided configuration
+      description: A dict of system log messages configuration.
       type: list
       elements: dict
       suboptions:
         syslog:
-          description: IP address of syslog server to be notified
+          description: IP address of syslog server to be notified.
           type: list
           elements: str
         severity:
           type: str
           description:
-          - Severity level of the log messages
+          - Severity level of the log messages.
           choices:
           - alert
           - critical
@@ -44,7 +48,7 @@ DOCUMENTATION: |
           - warning
     state:
       description:
-      - The state the configuration should be left in
+      - The state the configuration should be left in.
       type: str
       choices:
       - merged

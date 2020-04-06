@@ -4,77 +4,81 @@ ANSIBLE_METADATA: |
     {
         'metadata_version': '1.1',
         'status': ['preview'],
-        'supported_by': '<support_group>'
+        'supported_by': 'community'
     }
 
 NETWORK_OS: dmos
 RESOURCE: sntp
-COPYRIGHT: Copyright 2019 Red Hat
+COPYRIGHT: Copyright 2020 Datacom (Teracom Telematica S/A) <datacom.com.br>
 LICENSE: gpl-3.0.txt
 
 DOCUMENTATION: |
   module: dmos_sntp
-  version_added: 4.9
-  short_description: 'Manages <xxxx> attributes of <network_os> <resource>.'
-  description: 'Manages <xxxx> attributes of <network_os> <resource>'
-  author: Ansible Network Engineer
+  version_added: '2.10'
+  short_description: Manages Simple Network Time Protocol on DATACOM DmOS devices.
+  description:
+    - This module provides a declarative management of Simple Network Time Protocol
+      on DATACOM DmOS devices.
+  author:
+    - Vinicius Kleinubing (@vgkleinubing) <vinicius.grubel@datacom.com.br>
+    - LDS Labs (@lds-labs)
   notes:
-    - 'Tested against <network_os> <version>'
+    - Tested against DmOS version 5.2.0.
   options:
     config:
-      description: The provided configuration
+      description: A list of Simple Network Time Protocol configurations.
       type: list
       elements: dict
       suboptions:
         auth:
-          description: Network time protocol authentication
+          description: Network time protocol authentication.
           type: bool
         auth_key:
-          description: Authentication key
+          description: Authentication key.
           type: list
           elements: dict
           suboptions:
             id:
-              description: <1-4294967295> Key identifier
+              description: <1-4294967295> Key identifier.
               required: true
               type: int
             pass:
-              description: Password
+              description: Password.
               type: str
         client:
-          description: Global SNTP service state
+          description: Global SNTP service state.
           type: bool
         max_poll:
-          description: <3-17> Longest polling interval (in power of two seconds)
+          description: <3-17> Longest polling interval (in power of two seconds).
           type: int
         min_poll:
-          description: <3-17> Shortest polling interval (in power of two seconds)
+          description: <3-17> Shortest polling interval (in power of two seconds).
           type: int
         server:
-          description: Network time protocol server configuration
+          description: Network time protocol server configuration.
           type: list
           elements: dict
           suboptions:
             address:
-              description: IP address in a.b.c.d or X:X:X:X::X format
+              description: IP address in a.b.c.d or X:X:X:X::X format.
               required: true
               type: str
             key_id:
-              description: <1-4294967295> Authentication key ID
+              description: <1-4294967295> Authentication key ID.
               type: int
         source:
-          description: Source IP address from which NTP server connection will be established
+          description: Source IP address from which NTP server connection will be established.
           type: dict
           suboptions:
             ipv4:
-              description: IPv4 Address
+              description: IPv4 Address.
               type: str
             ipv6:
-              description: IPv6 Address
+              description: IPv6 Address.
               type: str
     state:
       description:
-      - The state the configuration should be left in
+      - The state the configuration should be left in.
       type: str
       choices:
       - merged
