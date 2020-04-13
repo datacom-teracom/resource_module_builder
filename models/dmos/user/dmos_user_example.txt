@@ -1,0 +1,12 @@
+
+# configure completion on space, idle_timeout and paginate to false
+
+dmos_user:
+  config:
+    - name: sample_user
+      description: sample user config
+      session:
+        complete_on_space: true
+        idle_timeout: 60
+        paginate: false
+

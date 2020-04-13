@@ -19,7 +19,7 @@ ANSIBLE_METADATA = {'metadata_version': '{{rm_ansible_metadata['metadata_version
 DOCUMENTATION = """
 ---
 module: {{ network_os }}_facts
-version_added: {{ rm_docmentation['version_added'] }}
+version_added: '{{ rm_docmentation['version_added'] }}'
 short_description: Get facts about {{ network_os }} devices.
 description:
   - Collects facts from network devices running the {{ network_os }} operating
@@ -37,9 +37,9 @@ options:
         list of values to include a larger subset. Values can also be used
         with an initial C(M(!)) to specify that a specific subset should
         not be collected.
+    type: list
     required: false
-    default: 'all'
-    version_added: "2.2"
+    default: '!config'
   gather_network_resources:
     description:
       - When supplied, this argument will restrict the facts collected
@@ -48,37 +48,42 @@ options:
         Can specify a list of values to include a larger subset. Values
         can also be used with an initial C(M(!)) to specify that a
         specific subset should not be collected.
+    type: list
     required: false
-    version_added: "2.9"
 """
 
 EXAMPLES = """
-# Gather all facts
-- {{ network_os }}_facts:
+- name: Gather all facts
+  {{ network_os }}_facts:
     gather_subset: all
     gather_network_resources: all
 
-# Collect only the {{ resource }} facts
-- {{ network_os }}_facts:
+- name: Collect only the {{ resource }} facts
+  {{ network_os }}_facts:
     gather_subset:
-      - !all
-      - !min
+      - '!all'
+      - '!min'
     gather_network_resources:
       - {{ resource }}
 
-# Do not collect {{ resource }} facts
-- {{ network_os }}_facts:
+- name: Do not collect {{ resource }} facts
+  {{ network_os }}_facts:
     gather_network_resources:
-      - "!{{ resource }}"
+      - '!{{ resource }}'
 
-# Collect {{ resource }} and minimal default facts
-- {{ network_os }}_facts:
+- name: Collect {{ resource }} and minimal default facts
+  {{ network_os }}_facts:
     gather_subset: min
     gather_network_resources: {{ resource }}
 """
 
 RETURN = """
-See the respective resource module parameters for the tree.
+ansible_facts:
+  description:
+    - Returns the facts collect from the device
+    - See the respective resource module parameters for the tree.
+  returned: always
+  type: dict
 """
 
 from ansible.module_utils.basic import AnsibleModule
