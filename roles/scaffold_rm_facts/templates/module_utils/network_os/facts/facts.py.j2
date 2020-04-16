@@ -9,15 +9,18 @@ this file validates each subset of facts and selectively
 calls the appropriate facts gathering function
 """
 
+from __future__ import absolute_import, division, print_function
+__metaclass__ = type
+
 from {{ import_path }}.{{ network_os }}.argspec.facts.facts import FactsArgs
 from ansible.module_utils.network.common.facts.facts import FactsBase
 from {{ import_path }}.{{ network_os }}.facts.{{ resource }}.{{ resource }} import {{ resource|capitalize }}Facts
-
 
 FACT_LEGACY_SUBSETS = {}
 FACT_RESOURCE_SUBSETS = dict(
     {{ resource }}={{ resource|capitalize }}Facts,
 )
+
 
 
 class Facts(FactsBase):
