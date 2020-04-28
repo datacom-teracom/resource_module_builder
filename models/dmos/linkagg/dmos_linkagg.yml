@@ -14,7 +14,7 @@ LICENSE: gpl-3.0.txt
 
 DOCUMENTATION: |
   module: dmos_linkagg
-  version_added: '2.10'
+  version_added: '2.9'
   short_description: Manages Link Aggregation Groups on DATACOM DmOS devices.
   description:
     - This module provides a declarative management of Link Aggregation Groups

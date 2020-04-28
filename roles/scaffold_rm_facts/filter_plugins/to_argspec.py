@@ -54,7 +54,7 @@ def to_argspec(spec):
 
     dive(doc['options'], result)
 
-    result = pprint.pformat(result, compact=True, indent=1)
+    result = pprint.pformat(result, indent=1)
     display.debug("Arguments: %s" % result)
     result[0].lstrip()
     return result
